@@ -17,6 +17,10 @@ public class TwoWayState implements State {
 
     @Override
     public void changeTrainUnitTime(Graph graph, int unit) {
-        //TODO
+        for (Node node : graph.getGraph()) {
+            for (Edge edge : node.getEdges()) {
+                edge.setWeight(unit);
+            }
+        }
     }
 }

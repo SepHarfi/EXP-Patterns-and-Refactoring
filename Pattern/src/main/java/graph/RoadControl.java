@@ -16,6 +16,6 @@ public class RoadControl {
     }
 
     public void changeTrainUnitTime(Graph graph, int unit) {
-        //TODO
+        state.changeTrainUnitTime(graph, unit);
     }
 }
