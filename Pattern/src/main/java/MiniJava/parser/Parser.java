@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Stack;
-
+import codeGenerator.CodeGeneratorFacade;
 import MiniJava.Log.Log;
 import MiniJava.codeGenerator.CodeGenerator;
 import MiniJava.errorHandler.ErrorHandler;
@@ -17,14 +17,13 @@ public class Parser {
     private Stack<Integer> parsStack;
     private ParseTable parseTable;
     private lexicalAnalyzer lexicalAnalyzer;
-    private CodeGenerator cg;
+    private CodeGeneratorFacade cg;
 
     public Parser() {
         parsStack = new Stack<Integer>();
         parsStack.push(0);
         try {
-            parseTable = new ParseTable(Files.readAllLines(Paths.get("src/main/resources/parseTable")).get(0));
-        } catch (Exception e) {
+            parseTable = new ParseTable(Files.readAllLines(Paths.get("/src/main/resources/parseTable")).get(0));        } catch (Exception e) {
             e.printStackTrace();
         }
         rules = new ArrayList<Rule>();
@@ -35,7 +34,7 @@ public class Parser {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        cg = new CodeGenerator();
+        cg = new CodeGeneratorFacade();
     }
 
     public void startParse(java.util.Scanner sc) {
