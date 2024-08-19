@@ -3,6 +3,7 @@ package graph;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
@@ -40,6 +41,13 @@ public class StateTest {
         roadControl.setState(new TwoWayState());
         roadControl.makeAllRoutesTwoWay(graph);
         assertFalse(nodes.get(0).getEdges().get(0).isDirected());
+    }
+
+    @Test
+    public void changeTrainUnitTimeTest(){
+        roadControl.setState(new OneWayState());
+        roadControl.changeTrainUnitTime(graph, 2);
+        assertEquals(nodes.get(0).getEdges().get(0).getWeight(), 2);
     }
 
 }
