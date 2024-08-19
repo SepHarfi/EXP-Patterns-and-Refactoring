@@ -40,4 +40,11 @@ public class StrategyTest {
         int distance = strategy.getDistance(nodes.get(0), nodes.get(2), null);
         assertEquals(2, distance);
     }
+
+    @Test
+    public void busStrategyTest() {
+        BusStrategy strategy = new BusStrategy(graph);
+        int distance = strategy.getDistance(nodes.get(0), nodes.get(2), null);
+        assertEquals(3, distance);
+    }
 }
