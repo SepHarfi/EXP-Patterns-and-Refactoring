@@ -8,7 +8,11 @@ public class TwoWayState implements State {
 
     @Override
     public void makeTwoWay(Graph graph) {
-        //TODO
+        for (Node node : graph.getGraph()) {
+            for (Edge edge : node.getEdges()) {
+                edge.setDirected(false);
+            }
+        }
     }
 
     @Override

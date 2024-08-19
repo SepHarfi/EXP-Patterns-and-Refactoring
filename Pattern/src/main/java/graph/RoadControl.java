@@ -12,7 +12,7 @@ public class RoadControl {
     }
 
     public void makeAllRoutesTwoWay(Graph graph) {
-        //TODO
+        state.makeTwoWay(graph);
     }
 
     public void changeTrainUnitTime(Graph graph, int unit) {
