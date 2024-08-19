@@ -1,4 +1,5 @@
-#الگوهای طراحی شئ‌گرا و بازآرایی کد (Object Oriented Design Patterns and Code Refactoring)
+# الگوهای طراحی شئ‌گرا و بازآرایی کد (Object Oriented Design Patterns and Code Refactoring)
+## اعضای گروه: سپهر حرفی - زهرا علیپور - محمدمهدی واحدی
 
 ## فاز اول
 
