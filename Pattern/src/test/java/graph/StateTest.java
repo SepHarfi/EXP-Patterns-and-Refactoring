@@ -3,6 +3,7 @@ package graph;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -30,6 +31,15 @@ public class StateTest {
         roadControl.setState(new OneWayState());
         roadControl.makeAllRoutesOneWay(graph);
         assertTrue(nodes.get(0).getEdges().get(0).isDirected());
+    }
+
+    @Test
+    public void makeTwoWayTest(){
+        roadControl.setState(new OneWayState());
+        roadControl.makeAllRoutesOneWay(graph);
+        roadControl.setState(new TwoWayState());
+        roadControl.makeAllRoutesTwoWay(graph);
+        assertFalse(nodes.get(0).getEdges().get(0).isDirected());
     }
 
 }
