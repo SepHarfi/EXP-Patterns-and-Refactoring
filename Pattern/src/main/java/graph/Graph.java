@@ -12,9 +12,11 @@ import org.javatuples.Pair;
 public class Graph {
     @Getter
     private ArrayList<Node> graph;
+    public int trainUnitTime;
 
     public Graph(ArrayList<Node> graph) {
         this.graph = graph;
+        this.trainUnitTime = 1;
     }
 
     public void resetVisits() {
@@ -22,8 +24,14 @@ public class Graph {
             v.setVisited(false);
     }
 
-    public void bfs(Node s) {
+    public void bfs(Node s, Node avoid) {
         this.resetVisits();
+        if(avoid != null){
+            avoid.setVisited(true);
+            for(Node node : this.graph){
+                node.setDistance(0);
+            }
+        }
 
         Queue<Pair<Node, Integer>> nodes = new LinkedList<>();
         nodes.add(new Pair<Node, Integer>(s, 0));
@@ -42,8 +50,11 @@ public class Graph {
         }
     }
 
-    public void dijkstra(Node s) {
+    public void dijkstra(Node s, Node avoid) {
         this.resetVisits();
+        if(avoid != null){
+            avoid.setVisited(true);
+        }
 
         PriorityQueue<Pair<Integer, Node>> nodes = new PriorityQueue<>();
         nodes.add(new Pair<Integer, Node>(0, s));
@@ -61,6 +72,10 @@ public class Graph {
                         .collect(Collectors.toCollection(PriorityQueue::new)));
             }
         }
+    }
+
+    public void setTrainUnitTime(int unit){
+        this.trainUnitTime = unit;
     }
 
 }
