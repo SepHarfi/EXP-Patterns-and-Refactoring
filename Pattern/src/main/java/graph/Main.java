@@ -32,6 +32,8 @@ public class Main {
 
     public static void runApp(Scanner scanner, Graph graph){
 
+        RoadControl roadControl = new RoadControl();
+
         while (true) {
 
             System.out.println("-----------------------------------------------");
@@ -54,18 +56,21 @@ public class Main {
             switch (command) {
 
                 case 1:
-                    //TODO
+                    roadControl.setState(new OneWayState());
+                    roadControl.makeAllRoutesOneWay(graph);
                     System.out.println("All routes are now one-way.");
                     break;
 
                 case 2:
-                    //TODO
+                    roadControl.setState(new TwoWayState());
+                    roadControl.makeAllRoutesTwoWay(graph);
                     System.out.println("All routes are now two-way.");
                     break;
 
                 case 3:
                     System.out.println("Enter new train unit time:");
-                    int newTime = scanner.nextInt(); //TODO
+                    int newTime = scanner.nextInt();
+                    roadControl.changeTrainUnitTime(graph, newTime);
                     System.out.println("Train unit time updated to " + newTime);
                     break;
 
