@@ -31,4 +31,13 @@ public class StrategyTest {
         assertEquals(1, distance);
     }
     
+    @Test
+    public void trainStrategyDirectTest() {
+        RoadControl roadControl = new RoadControl();
+        roadControl.setState(new OneWayState());
+        roadControl.makeAllRoutesOneWay(graph);
+        TrainStrategy strategy = new TrainStrategy(graph);
+        int distance = strategy.getDistance(nodes.get(0), nodes.get(2), null);
+        assertEquals(2, distance);
+    }
 }
