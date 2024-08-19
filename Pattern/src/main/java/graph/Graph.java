@@ -29,7 +29,7 @@ public class Graph {
         if(avoid != null){
             avoid.setVisited(true);
         }
-        
+
         Queue<Pair<Node, Integer>> nodes = new LinkedList<>();
         nodes.add(new Pair<Node, Integer>(s, 0));
         while (!nodes.isEmpty()) {
@@ -47,8 +47,11 @@ public class Graph {
         }
     }
 
-    public void dijkstra(Node s) {
+    public void dijkstra(Node s, Node avoid) {
         this.resetVisits();
+        if(avoid != null){
+            avoid.setVisited(true);
+        }
 
         PriorityQueue<Pair<Integer, Node>> nodes = new PriorityQueue<>();
         nodes.add(new Pair<Integer, Node>(0, s));

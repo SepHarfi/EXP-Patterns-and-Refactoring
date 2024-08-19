@@ -9,7 +9,7 @@ public class BusStrategy implements Strategy{
 
     @Override
     public int getDistance(Node startCity, Node endCity, Node avoidCity) {
-        //TODO
-        return 0;
+        graph.dijkstra(startCity, avoidCity);
+        return endCity.getDistance();
     }
 }
