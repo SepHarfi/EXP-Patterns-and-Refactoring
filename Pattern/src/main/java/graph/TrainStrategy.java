@@ -9,7 +9,8 @@ public class TrainStrategy implements Strategy {
 
     @Override
     public int getDistance(Node startCity, Node endCity, Node avoidCity) {
-        //TODO
-        return 0;
+        graph.bfs(startCity, avoidCity);
+        int distance = endCity.getDistance() * graph.trainUnitTime; 
+        return distance;
     }
 }

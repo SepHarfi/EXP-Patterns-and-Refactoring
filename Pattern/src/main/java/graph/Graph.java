@@ -24,9 +24,12 @@ public class Graph {
             v.setVisited(false);
     }
 
-    public void bfs(Node s) {
+    public void bfs(Node s, Node avoid) {
         this.resetVisits();
-
+        if(avoid != null){
+            avoid.setVisited(true);
+        }
+        
         Queue<Pair<Node, Integer>> nodes = new LinkedList<>();
         nodes.add(new Pair<Node, Integer>(s, 0));
         while (!nodes.isEmpty()) {
