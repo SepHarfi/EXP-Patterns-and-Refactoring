@@ -20,10 +20,10 @@ public class Main {
         int roadCount = scanner.nextInt();
         scanner.nextLine();
 
-        System.out.println("Enter roads in format {from to}");
+        System.out.println("Enter roads in format {from to weight}");
         for (int i = 0; i < roadCount; i++) {
             String[] road = scanner.nextLine().split(" ");
-            Edge.createEdge(cities.get(Integer.parseInt(road[0]) + 1), cities.get(Integer.parseInt(road[1]) + 1), false, 1);
+            Edge.createEdge(cities.get(Integer.parseInt(road[0]) + 1), cities.get(Integer.parseInt(road[1]) + 1), false, Integer.parseInt(road[2]));
         }
 
         Graph graph = new Graph(cities);
@@ -33,6 +33,8 @@ public class Main {
     public static void runApp(Scanner scanner, Graph graph){
 
         RoadControl roadControl = new RoadControl();
+        TrainStrategy trainStrategy = new TrainStrategy(graph);
+        BusStrategy busStrategy = new BusStrategy(graph);
 
         while (true) {
 
@@ -76,30 +78,30 @@ public class Main {
 
                 case 4:
                     System.out.println("Enter start and end city:");
-                    String startCityTrain = scanner.next();
-                    String endCityTrain = scanner.next();
-                    int trainTime = 0; //TODO
-                    System.out.println("Train travel time from " + startCityTrain + " to " + endCityTrain + " is " + trainTime + " units.");
+                    Node startCityTrain = graph.getGraph().get(scanner.nextInt() -1);
+                    Node endCityTrain = graph.getGraph().get(scanner.nextInt() -1);
+                    int trainTime = trainStrategy.getDistance(startCityTrain, endCityTrain, null);
+                    System.out.println("Train travel time is " + trainTime + " units.");
                     break;
 
                 case 5:
                     System.out.println("Enter start and end city:");
-                    String startCityBus = scanner.next();
-                    String endCityBus = scanner.next();
-                    int busTime = 0; //TODO
-                    System.out.println("Bus travel time from " + startCityBus + " to " + endCityBus + " is " + busTime + " units.");
+                    Node startCityBus = graph.getGraph().get(scanner.nextInt() -1);
+                    Node endCityBus = graph.getGraph().get(scanner.nextInt() -1);
+                    int busTime = busStrategy.getDistance(startCityBus, endCityBus, null);
+                    System.out.println("Bus travel time is " + busTime + " units.");
                     break;
 
                 case 6:
                     System.out.println("Enter start and end city:");
-                    String startCity = scanner.next();
-                    String endCity = scanner.next();
-                    int timeByTrain = 0; //TODO
-                    int timeByBus = 0; //TODO
+                    Node startCity = graph.getGraph().get(scanner.nextInt() -1);
+                    Node endCity = graph.getGraph().get(scanner.nextInt() -1);
+                    int timeByTrain = trainStrategy.getDistance(startCity, endCity, null);
+                    int timeByBus = busStrategy.getDistance(startCity, endCity, null);
                     if (timeByTrain <= timeByBus){
-                        System.out.println("Faster travel method from " + startCity + " to " + endCity + " is by train.");
+                        System.out.println("Faster travel method is by train.");
                     }else {
-                        System.out.println("Faster travel method from " + startCity + " to " + endCity + " is by bus."); 
+                        System.out.println("Faster travel method is by bus."); 
                     }
                     break;
 
