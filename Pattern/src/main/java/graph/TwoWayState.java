@@ -3,7 +3,7 @@ package graph;
 public class TwoWayState implements State {
     @Override
     public void makeOneWay(Graph graph) {
-        //TODO
+        // Empty Body
     }
 
     @Override
