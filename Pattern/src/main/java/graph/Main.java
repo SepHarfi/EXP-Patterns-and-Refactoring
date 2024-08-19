@@ -23,7 +23,7 @@ public class Main {
         System.out.println("Enter roads in format {from to weight}");
         for (int i = 0; i < roadCount; i++) {
             String[] road = scanner.nextLine().split(" ");
-            Edge.createEdge(cities.get(Integer.parseInt(road[0]) + 1), cities.get(Integer.parseInt(road[1]) + 1), false, Integer.parseInt(road[2]));
+            Edge.createEdge(cities.get(Integer.parseInt(road[0]) - 1), cities.get(Integer.parseInt(road[1]) - 1), false, Integer.parseInt(road[2]));
         }
 
         Graph graph = new Graph(cities);
@@ -33,6 +33,7 @@ public class Main {
     public static void runApp(Scanner scanner, Graph graph){
 
         RoadControl roadControl = new RoadControl();
+        roadControl.setState(new TwoWayState());
         TrainStrategy trainStrategy = new TrainStrategy(graph);
         BusStrategy busStrategy = new BusStrategy(graph);
 
@@ -107,11 +108,15 @@ public class Main {
 
                 case 7:
                     System.out.println("Enter start city, end city, and city to avoid:");
-                    String startCityAvoid = scanner.next();
-                    String endCityAvoid = scanner.next();
-                    String avoidCity = scanner.next();
-                    boolean canAvoid = false; //TODO
-                    System.out.println("It is " + (canAvoid ? "possible" : "not possible") + " to travel from " + startCityAvoid + " to " + endCityAvoid + " avoiding " + avoidCity + ".");
+                    Node startCityTest = graph.getGraph().get(scanner.nextInt() -1);
+                    Node endCityTest = graph.getGraph().get(scanner.nextInt() -1);
+                    Node avoidCity = graph.getGraph().get(scanner.nextInt() -1);
+                    int distance = trainStrategy.getDistance(startCityTest, endCityTest, avoidCity);
+                    if(distance == 0){
+                        System.out.println("It is not possible.");
+                    }else{
+                        System.out.println("It is possible.");
+                    }
                     break;
 
                 default:

@@ -28,6 +28,9 @@ public class Graph {
         this.resetVisits();
         if(avoid != null){
             avoid.setVisited(true);
+            for(Node node : this.graph){
+                node.setDistance(0);
+            }
         }
 
         Queue<Pair<Node, Integer>> nodes = new LinkedList<>();

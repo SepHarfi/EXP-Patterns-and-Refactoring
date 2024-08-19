@@ -60,7 +60,7 @@ public class StrategyTest {
         RoadControl roadControl = new RoadControl();
         roadControl.setState(new OneWayState());
         roadControl.makeAllRoutesOneWay(graph);
-        BusStrategy strategy = new BusStrategy(graph);
+        TrainStrategy strategy = new TrainStrategy(graph);
         int distance = strategy.getDistance(nodes.get(0), nodes.get(2), nodes.get(1));
         assertEquals(0, distance);
     }
