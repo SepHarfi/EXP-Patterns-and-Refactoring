@@ -47,7 +47,7 @@ public class StateTest {
     public void changeTrainUnitTimeTest(){
         roadControl.setState(new OneWayState());
         roadControl.changeTrainUnitTime(graph, 2);
-        assertEquals(nodes.get(0).getEdges().get(0).getWeight(), 2);
+        assertEquals(2, graph.trainUnitTime);
     }
 
 }

@@ -12,9 +12,11 @@ import org.javatuples.Pair;
 public class Graph {
     @Getter
     private ArrayList<Node> graph;
+    public int trainUnitTime;
 
     public Graph(ArrayList<Node> graph) {
         this.graph = graph;
+        this.trainUnitTime = 1;
     }
 
     public void resetVisits() {
@@ -61,6 +63,10 @@ public class Graph {
                         .collect(Collectors.toCollection(PriorityQueue::new)));
             }
         }
+    }
+
+    public void setTrainUnitTime(int unit){
+        this.trainUnitTime = unit;
     }
 
 }
