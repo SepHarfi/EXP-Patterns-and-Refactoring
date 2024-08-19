@@ -3,7 +3,11 @@ package graph;
 public class OneWayState implements State {
     @Override
     public void makeOneWay(Graph graph) {
-        //TODO
+        for (Node node : graph.getGraph()) {
+            for (Edge edge : node.getEdges()) {
+                edge.setDirected(true);
+            }
+        }
     }
 
     @Override

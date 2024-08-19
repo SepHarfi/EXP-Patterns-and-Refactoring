@@ -8,7 +8,7 @@ public class RoadControl {
     }
 
     public void makeAllRoutesOneWay(Graph graph) {
-        //TODO
+        state.makeOneWay(graph);
     }
 
     public void makeAllRoutesTwoWay(Graph graph) {
