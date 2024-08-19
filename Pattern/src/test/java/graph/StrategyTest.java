@@ -21,14 +21,14 @@ public class StrategyTest {
         graph = new Graph(nodes);
         Edge.createEdge(nodes.get(0), nodes.get(1), false, 1);
         Edge.createEdge(nodes.get(1), nodes.get(2), false, 2);
-        Edge.createEdge(nodes.get(2), nodes.get(0), false, 3);
+        Edge.createEdge(nodes.get(2), nodes.get(0), false, 5);
     }
     
     @Test
     public void trainStrategyTest() {
         TrainStrategy strategy = new TrainStrategy(graph);
         int distance = strategy.getDistance(nodes.get(0), nodes.get(2), null);
-        assertEquals(3, distance);
+        assertEquals(1, distance);
     }
     
 }
