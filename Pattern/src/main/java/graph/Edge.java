@@ -8,9 +8,9 @@ public class Edge {
     @Getter
     private final Pair<Node, Node> nodes;
     @Getter
-    private final boolean directed;
+    private boolean directed;
     @Getter
-    private final int weight;
+    private int weight;
 
     private Edge(Node a, Node b, boolean directed, int weight) {
         nodes = new Pair<Node, Node>(a, b);
@@ -22,6 +22,14 @@ public class Edge {
         Edge newEdge = new Edge(a, b, directed, weight);
         a.getEdges().add(newEdge);
         b.getEdges().add(newEdge);
+    }
+
+    public void setDirected(boolean directed){
+        this.directed = directed;
+    }
+
+    public void setWeight(int weight){
+        this.weight = weight;
     }
 
 }
