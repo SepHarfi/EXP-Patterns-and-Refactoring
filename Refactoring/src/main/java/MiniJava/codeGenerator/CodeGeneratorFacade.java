@@ -1,7 +1,7 @@
-package codeGenerator;
+package MiniJava.codeGenerator;
 
 
-import scanner.token.Token;
+import MiniJava.scanner.token.Token;
 
 public class CodeGeneratorFacade {
     private CodeGenerator codeGenerator;

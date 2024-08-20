@@ -1,6 +1,8 @@
-import java.util.Scanner;
+package MiniJava;
 
-import parser.Parser;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
 import parser.ParserFacade;
 
 public class Main {
